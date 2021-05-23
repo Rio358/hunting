@@ -6,41 +6,41 @@ RegisterServerEvent('hunting:rewardShit')
 AddEventHandler('hunting:rewardShit', function(Weight)
     math.randomseed(os.time())
     local xPlayer = ESX.GetPlayerFromId(source)
-    local luck = math.random(1,100)
-    local luck2 = math.random(1,100)
-    local luck3 = math.random(1,100)
-    local luck4 = math.random(1,100)
+    local luck = math.random(1,100) -- rng for small weight game
+    local luck2 = math.random(1,100) -- rng for medium weight game
+    local luck3 = math.random(1,100) -- rng for large weight game
+    local luck4 = math.random(1,100) -- rng for leather grade
 
     if Weight >= 1 then
         if luck >= 95 then
-            if xPlayer.canCarryItem('meat5star', tonumber(Weight) / 2) then
-                xPlayer.addInventoryItem('meat5star', tonumber(Weight) / 2)
+            if xPlayer.canCarryItem('meat5star', tonumber(Weight) / 2) then -- to do, better distribution of items?
+                xPlayer.addInventoryItem('meat5star', tonumber(Weight) / 2) -- to do, better distribution of items?
             else
                 TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer, {type = 'error', text = 'You cannot carry anymore.', length = 3000})
             end
         elseif luck >= 85 and luck <= 94 then
-            if xPlayer.canCarryItem('meat4star', tonumber(Weight) / 2) then
-                xPlayer.addInventoryItem('meat4star', tonumber(Weight) / 2)
+            if xPlayer.canCarryItem('meat4star', tonumber(Weight) / 2) then -- to do, better distribution of items?
+                xPlayer.addInventoryItem('meat4star', tonumber(Weight) / 2) -- to do, better distribution of items?
             else
                 TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer, {type = 'error', text = 'You cannot carry anymore.', length = 3000})
             end
         elseif luck >= 55 and luck <= 84 then
-            if xPlayer.canCarryItem('meat3star', tonumber(Weight) / 2) then
-                xPlayer.addInventoryItem('meat3star', tonumber(Weight) / 2)
+            if xPlayer.canCarryItem('meat3star', tonumber(Weight) / 2) then -- to do, better distribution of items?
+                xPlayer.addInventoryItem('meat3star', tonumber(Weight) / 2) -- to do, better distribution of items?
             else
                 TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer, {type = 'error', text = 'You cannot carry anymore.', length = 3000})
             end
         elseif luck >= 35 and luck <= 54 then
-            if xPlayer.canCarryItem('meat2star', tonumber(Weight) / 2) then
-                xPlayer.addInventoryItem('meat2star', tonumber(Weight) / 2)
+            if xPlayer.canCarryItem('meat2star', tonumber(Weight) / 2) then -- to do, better distribution of items?
+                xPlayer.addInventoryItem('meat2star', tonumber(Weight) / 2) -- to do, better distribution of items?
             else
                 TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer, {type = 'error', text = 'You cannot carry anymore.', length = 3000})
             end
         elseif luck >= 1 and luck <= 34 then
-            if xPlayer.canCarryItem('meat', tonumber(Weight) / 2) then
-                xPlayer.addInventoryItem('meat', tonumber(Weight) / 2)
+            if xPlayer.canCarryItem('meat', tonumber(Weight) / 2) then -- to do, better distribution of items?
+                xPlayer.addInventoryItem('meat', tonumber(Weight) / 2) -- to do, better distribution of items?
             else
-                TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer, {type = 'error', text = 'You cannot carry anymore.', length = 3000})
+                TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer, {type = 'error', text = 'You cannot carry anymore.', length = 3000}) -- to do, Fix these fucking alerts, they currently don't do shit?
             end
         end
     elseif Weight >= 9 then

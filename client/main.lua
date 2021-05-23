@@ -25,7 +25,7 @@ local animal = {
 	`a_c_cow`,
 }
 
--- coffee maker
+-- create interactive animal ped models
 exports['bt-target']:AddTargetModel(animal, {
 	options = {
 		{
@@ -37,6 +37,8 @@ exports['bt-target']:AddTargetModel(animal, {
 	job = {"all"},
 	distance = 3.5
 })
+
+-- Inside of the Base IPL Chicken Factory, add a blip or don't
 
 exports['bt-target']:AddBoxZone("Paleto hunting-seller", vector3(-70.23, 6256.43, 31.09), 0.8, 0.8, {
 	name= "Paleto hunting-seller",

@@ -5,6 +5,7 @@
 * ESX Legacy, ymmv
 * PolyZone
 * Bt-Target
+* mythic_notify or a notification script of your choice.
 
 # Inspired by qalle-esx-hunting used as reference in creation.
 

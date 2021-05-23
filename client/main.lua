@@ -63,12 +63,13 @@ exports['bt-target']:AddBoxZone("Paleto hunting-seller", vector3(-70.23, 6256.43
 	distance = 2.5
 })
 
+--`a_c_deer`, `a_c_boar`, `a_c_coyote`, `a_c_mtlion`, `a_c_pig`, `a_c_rabbit_01`, `a_c_rat` If needbe you can probably attach these their own events, messy but workable.
 
 RegisterNetEvent("hunting:butcherCreature")
 AddEventHandler("hunting:butcherCreature", function()
 	local dead = false
 	local closestAnimal, closestDistance = ESX.Game.GetClosestPed(coords)
-	local animal = `a_c_cow`, `a_c_deer`, `a_c_boar`, `a_c_coyote`, `a_c_mtlion`, `a_c_pig`, `a_c_rabbit_01`, `a_c_rat`
+	local animal = `a_c_cow`, `a_c_deer`, `a_c_boar`, `a_c_coyote`, `a_c_mtlion`, `a_c_pig`, `a_c_rabbit_01`, `a_c_rat` -- not sure if general bug on my end, but this could potentially break.
 	local plyCoords = GetEntityCoords(PlayerPedId())
 	local coords = GetEntityCoords(animal)
 	if closestAnimal ~= -1 and closestDistance <= 3.0 then
@@ -78,10 +79,9 @@ AddEventHandler("hunting:butcherCreature", function()
 
 				TaskPlayAnim(PlayerPedId(), "amb@medic@standing@kneel@base" ,"base" ,8.0, -8.0, -1, 1, 0, false, false, false )
 				TaskPlayAnim(PlayerPedId(), "anim@gangops@facility@servers@bodysearch@" ,"player_search" ,8.0, -8.0, -1, 48, 0, false, false, false )
-				Citizen.Wait(10000)
+				Citizen.Wait(15000)
 				ClearPedTasksImmediately(PlayerPedId())
-				local random = math.random(300)
-				local AnimalWeight = tonumber(ESX.Math.Round(random,1)) / 10
+				local AnimalWeight = math.random(220) / 10
 				exports['mythic_notify']:DoLongHudText('inform', 'You have slaughtered an animal yielding a total of ' ..AnimalWeight.. 'kg of meat and leather.', 6500)
 				TriggerServerEvent('hunting:rewardShit', AnimalWeight)
 				Citizen.Wait(150)

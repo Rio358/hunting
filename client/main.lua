@@ -75,28 +75,38 @@ AddEventHandler("hunting:butcherCreature", function()
 	if closestAnimal ~= -1 and closestDistance <= 3.0 then
 		if GetPedType(closestAnimal) == 28 and GetEntityHealth(closestAnimal) == 0 and GetPedSourceOfDeath(closestAnimal) == PlayerPedId() then
 			dead = true
+			while not NetworkHasControlOfEntity(closestAnimal) and attempt < 10 and DoesEntityExist(closestAnimal) do
+				Citizen.Wait(100)
+				NetworkRequestControlOfEntity(closestAnimal)
+				attempt = attempt + 1
+			end
 			 if GetSelectedPedWeapon(PlayerPedId()) == GetHashKey('WEAPON_KNIFE') then
-				isButchering = true
-				TaskPlayAnim(PlayerPedId(), "amb@medic@standing@kneel@base" ,"base" ,8.0, -8.0, -1, 1, 0, false, false, false )
-				TriggerEvent("mythic_progbar:client:progress", {
-					name = "skinning",
-					duration = 7500,
-					label = "Skinning Animal",
-					useWhileDead = false,
-					canCancel = true,
-					controlDisables = {
-						disableMovement = true,
-						disableCarMovement = true,
-						disableMouse = true,
-						disableCombat = true,
-					},
-					animation = {
-						animDict = "anim@gangops@facility@servers@bodysearch@",
-						anim = "player_search"
-					},
-				  }, function(status)
-					  if not status then
-						Citizen.Wait(500)
+				if DoesEntityExist(closestAnimal) and NetworkHasControlOfEntity(closestAnimal) then
+					local netid = NetworkGetNetworkIdFromEntity(closestAnimal)
+					SetNetworkIdCanMigrate(netid, false)
+					print(netid)
+					-- harvest this sonofa thnx thelindat
+					isButchering = true
+					TaskPlayAnim(PlayerPedId(), "amb@medic@standing@kneel@base" ,"base" ,8.0, -8.0, -1, 1, 0, false, false, false )
+					TriggerEvent("mythic_progbar:client:progress", {
+						name = "skinning",
+						duration = 7500,
+						label = "Skinning Animal",
+						useWhileDead = false,
+						canCancel = true,
+						controlDisables = {
+							disableMovement = true,
+							disableCarMovement = true,
+							disableMouse = true,
+							disableCombat = true,
+						},
+						animation = {
+							animDict = "anim@gangops@facility@servers@bodysearch@",
+							anim = "player_search"
+						},
+					  }, function(status)
+						  if not status then
+							Citizen.Wait(500)
 							local AnimalWeight = math.random(200) / 10
 							exports['mythic_notify']:DoLongHudText('inform', 'You have slaughtered an animal yielding a total of ' ..AnimalWeight.. 'kg of meat and leather.', 6500)
 							isButchering = false
@@ -106,11 +116,12 @@ AddEventHandler("hunting:butcherCreature", function()
 							SetEntityAsMissionEntity(closestAnimal, true, true)
 							SetEntityAsNoLongerNeeded(closestAnimal)
 							DeleteEntity(closestAnimal)
-						if math.random(1,10) < 6 then
-						  exports['utk_stress']:AddStress('instant', 10000)
+							if math.random(1,10) < 6 then
+							  exports['utk_stress']:AddStress('instant', 10000) -- or your stress event here
+							end
 						end
-					end
-				end)
+					end)
+				end
 			 else
 			 	exports['mythic_notify']:DoShortHudText('inform', 'This is the wrong tool for that activity, use a knife.', 3000)
 			 end

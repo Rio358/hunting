@@ -2,7 +2,7 @@ fx_version "bodacious"
 
 author "Rio"
 description "Hunting activity independant of any outside influence, see animal, murder animal, profit."
-version "1.0.0.1"
+version "1.0.0.2"
 
 game "gta5"
 

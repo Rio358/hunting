@@ -3,9 +3,10 @@
 [REQUIREMENTS]
   
 * ESX Legacy, ymmv
-* PolyZone
-* Bt-Target
-* mythic_notify or a notification script of your choice.
+* PolyZone ``https://github.com/mkafrin/PolyZone``
+* Bt-Target ``https://github.com/brentN5/bt-target``
+* mythic_notify or a notification script of your choice. ``Don't currently have a recent link to this one, but it does exist!``
+* mythic_progbar ``Don't currently have a recent link to this one either, but it does exist!``
 
 # Inspired by qalle-esx-hunting used as reference in creation.
 

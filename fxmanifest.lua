@@ -1,6 +1,6 @@
 fx_version "bodacious"
 
-author "Rio"
+author "Rio358, thelindat, DRKM43"
 description "Hunting activity independant of any outside influence, see animal, murder animal, profit."
 version "1.0.0.3"
 
@@ -8,7 +8,10 @@ game "gta5"
 
 dependencies {
   'PolyZone',
-  'bt-target'
+  'bt-target',
+  'mythic_progbar',
+  'mythic_notify',
+--'utk_stress',
 }
 
 server_scripts {
@@ -17,4 +20,5 @@ server_scripts {
 
 client_scripts {
   'client/main.lua',
+  'client/config.lua'
 }

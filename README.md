@@ -9,6 +9,7 @@
 * mythic_progbar ``Don't currently have a recent link to this one either, but it does exist!``
 
 # Inspired by qalle-esx-hunting used as reference in creation.
+# Contributed to by thelindat, DRKM43 ``network code and ped spawner respectively``
 
 # No Promises if it will function for previous version of ESX with the nature of the natives called, if it does, poggers, if not, I'm sure someone'll figure it out.
 You are free to edit whatever it is that might tickle your fancy, just don't try to profit off of it or anything dickish like that.

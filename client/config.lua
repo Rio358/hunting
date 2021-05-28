@@ -23,3 +23,42 @@ Config.PedList = {
 		gender = 'male' -- he's got balls.
 	},
 }
+
+
+
+--[[
+If your version of mythic_notify did not include SendAlert you may add it by doing the following. Locate the folder mythic_notify/client. Edit the main.lua to include the following
+
+RegisterNetEvent('mythic_notify:client:SendAlert')
+AddEventHandler('mythic_notify:client:SendAlert', function(data)
+	SendAlert(data.type, data.text, data.length, data.style)
+end)
+
+function SendAlert(type, text, length, style)
+	SendNUIMessage({
+		type = type,
+		text = text,
+		length = length,
+		style = style
+	})
+end
+
+now, back to the root folder to locate either your resource__.lua or fxmanifest.lua and attach 
+
+exports {
+	'SendAlert',
+
+
+the exports table will end up looking something like this
+
+exports {
+	'SendAlert',
+	'SendUniqueAlert',
+	'PersistentAlert',
+	'DoLongHudText',
+	'DoShortHudText',
+	'DoHudText',
+	'DoCustomHudText'
+}
+
+]]

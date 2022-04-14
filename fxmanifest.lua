@@ -5,20 +5,25 @@ description "Hunting activity independant of any outside influence, see animal, 
 version "1.0.0.3"
 
 game "gta5"
+lua54 "yes"
+
+shared_scripts {
+  '@es_extended/imports.lua',
+  'config.lua'
+}
 
 dependencies {
   'PolyZone',
-  'bt-target',
+  'qtarget',
   'mythic_progbar',
   'mythic_notify',
---'utk_stress',
 }
 
 server_scripts {
-  'server/main.lua'
+  'server/*.lua'
 }
 
 client_scripts {
-  'client/main.lua',
-  'client/config.lua'
+  'client/*.lua',
+
 }

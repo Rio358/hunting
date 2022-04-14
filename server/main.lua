@@ -47,7 +47,7 @@ AddEventHandler('hunting:sellMeat', function(playerId)
 		if v.name == 'meat' then
 			if v.metadata and v.metadata.grade then 
 				local price = math.ceil(MeatPrice * v.metadata.grade)
-				payOut = payOut + price * v.count
+				payOut = (payOut + price) * v.count
 				quantity = quantity + 1
 				xPlayer.removeInventoryItem('meat', v.count)
 			else
@@ -77,7 +77,7 @@ AddEventHandler('hunting:sellLeather', function()
 		if v.name == 'leather' then
 			if v.metadata and v.metadata.grade then 
 				local price = math.ceil(leatherPrice * v.metadata.grade)
-				payOut = payOut + price * v.count
+				payOut = (payOut + price) * v.count
 				quantity = quantity + 1
 				xPlayer.removeInventoryItem('leather', v.count)
 			else 
